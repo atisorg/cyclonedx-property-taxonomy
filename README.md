@@ -1,0 +1,1 @@
+# cyclonedx-property-taxonomy
