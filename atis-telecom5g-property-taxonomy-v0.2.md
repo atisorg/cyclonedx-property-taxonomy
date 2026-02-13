@@ -1,4 +1,4 @@
-# `atis:telecom5g` Namespace Taxonomy (Draft v0.2)
+# `atis:telecom5g` Namespace Taxonomy (Draft v0.1)
 
 This document defines the namespaces and properties used by the **`atis:telecom5g`** top-level namespace for a **3GPP 5G Architecture CBOM Profile** built on **CycloneDX 1.7**.
 
@@ -15,6 +15,19 @@ The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL 
 ## Where properties may be used
 
 ## CBOM scope and assertion semantics (normative)
+
+## Interface binding component pattern (recommended)
+
+To represent **hierarchical** relationships (Interface → Protocol(s) → Algorithm(s)) while remaining schema-aligned, this taxonomy RECOMMENDS modeling each interface binding as a **separate component** with a stable `bom-ref`.
+
+- **Suggested `bom-ref` pattern:** `iface:nf:<NF_NAME>:<INTERFACE>[:<SCOPE>]`  
+  Examples:
+  - `iface:nf:AMF:N2` (vendor/capability)
+  - `iface:nf:AMF:N2:deployed` (on-the-wire)
+
+The interface binding component can carry the TR/TS 33.938-aligned fields (`interface`, `cryptoFunction`, `protocol`, `cryptography`, `pqcRiskLevel`) and any effective/on-the-wire fields for `deployed` scope.
+
+The binding component SHOULD then declare dependencies on `cryptographic-asset` components that represent protocols and algorithms.
 
 This taxonomy supports two complementary use cases:
 
@@ -89,6 +102,15 @@ Sub-namespace for properties describing **3GPP 5G architecture**, including **ne
 ## Per-interface bindings: `atis:telecom5g:iface.<Nxx>.*`
 
 ### Effective (on-the-wire) per-interface reporting (recommended)
+### Effective reporting (flat, optional)
+If a producer prefers *flat* reporting on the interface binding component (in addition to dotted names), the following properties MAY be used:
+
+| Property | Description | Value type | Cardinality | Property of |
+|---|---|---:|---:|---|
+| `atis:telecom5g:effectiveProtocol` | Effective protocol(s) used on the wire for the interface binding. | string | MAY appear multiple times | component |
+| `atis:telecom5g:effectiveCryptography` | Effective negotiated/enforced algorithms/suites used on the wire. | string | MAY appear multiple times | component |
+
+
 When producing a **deployed** CBOM, producers SHOULD report the *effective* configuration/negotiated posture per interface. If needed, the following optional properties may be used:
 
 | Property | Description | Value type | Cardinality | Property of |
@@ -159,17 +181,17 @@ The following properties align to a 3GPP cryptographic-inventory field set (TR/T
 
 ### Crypto Function
 - **CycloneDX mapping:** `component.properties[name="atis:telecom5g:cryptoFunction"]`
-- **Rule:** MAY appear once per interface binding
+- **Rule:** MAY appear once per interface binding (repeatable if multiple protocols are used)
 - **Controlled vocabulary:** `Authentication`, `Integrity`, `Confidentiality`, `ChannelProtection-CP`, `ChannelProtection-UP`, `APIProtection`, `KeyManagement`.
 
 ### Protocol
 - **CycloneDX mapping:** `component.properties[name="atis:telecom5g:protocol"]`
-- **Rule:** MAY appear once per interface binding
+- **Rule:** MAY appear once per interface binding (repeatable if multiple protocols are used)
 - **Naming convention (canonical examples):** `5G-AKA`, `EAP-AKA'`, `TLS 1.3`, `IPsec/IKEv2`, `PRINS`, `DTLS 1.3`, `PDCP Security`, `X.509 PKI`, `OCSP`.
 
 ### Cryptography (Algorithms / Suites / Primitives)
 - **CycloneDX mapping:** `component.properties[name="atis:telecom5g:cryptography"]`
-- **Rule:** MAY appear once per interface binding
+- **Rule:** MAY appear once per interface binding (repeatable if multiple protocols are used)
 - **Naming convention (canonical examples):** `AES-128-GCM`, `HMAC-SHA-256`, `RSA-2048`, `ECDHE P-256`, `ECDSA P-256`, `128-NEA1`, `128-NIA2`, `MILENAGE`, `TUAK`.
 
 ### PQC Risk Level
