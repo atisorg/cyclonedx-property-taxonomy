@@ -1,4 +1,4 @@
-Guide to Using and Implementing the
+# **Guide to Using and Implementing the**
 ATIS Telecom 5G CBOM Property Taxonomy
 
 Implementation-oriented guidance for applying the ATIS `atis:telecom5g` property taxonomy
@@ -26,7 +26,7 @@ The guide is intentionally implementation-focused. The authoritative current def
 
 The document draws on three foundations. First, the ATIS taxonomy provides the 5G profile structure and the 5G-specific namespaces and recommended modeling patterns. Second, the CycloneDX CBOM guide provides the general CBOM model for cryptographic assets, dependencies, and automation. Third, the IBM one-sheet highlights the operational value of CBOMs for cryptographic inventory, weak-crypto discovery, policy assessment, and quantum-readiness planning.
 
-1. References
+## **1. References**
 
 The following references should be used with this guide. Normative references define the basis of implementation. Informative references provide context, rationale, and supporting practices.
 
@@ -40,7 +40,7 @@ The following references should be used with this guide. Normative references de
 
 This guide should always be read together with the ATIS GitHub taxonomy. When there is any difference between this implementation guidance and the latest taxonomy publication, the current GitHub taxonomy release should be treated as the source of truth for property definitions and examples.
 
-2. Scope and Intended Audience
+## **2. Scope and Intended Audience**
 
 This guide is scoped to the use of the ATIS Telecom 5G CBOM Property Taxonomy for a 3GPP 5G security architecture CBOM. Its purpose is to help implementers apply the taxonomy in a practical, repeatable way. The guide is not a restatement of the full taxonomy and it is not a replacement for CycloneDX or 3GPP source specifications.
 
@@ -74,7 +74,7 @@ Defining a new validator specification or a new schema independent of CycloneDX.
 
 Providing a library of full examples in this document; examples should be maintained on the ATIS GitHub with the live taxonomy release.
 
-3. How to Use This Guide with the ATIS GitHub Taxonomy
+## **3. How to Use This Guide with the ATIS GitHub Taxonomy**
 
 The ATIS GitHub taxonomy and this guide play different roles. The taxonomy defines the property namespace, the property names, where each property may be attached, and the recommended modeling patterns. This guide explains how to use those capabilities in an implementation program.
 
@@ -108,7 +108,7 @@ The ATIS GitHub repository hosts the normative taxonomy and the supporting valid
 | Example CBOMs | 5G CBOM examples/ (subfolder) | Reference CBOM examples for common 5G cases and patterns. | Maintained as examples rather than normative requirements. |
 | Scenario-specific validators (optional) | Validator/ (subfolder) | Additional strict validators for specific scenarios (e.g., roaming SEPP). | Optional modules; not required for generic conformance. |
 
-4. 5G CBOM Fundamentals in CycloneDX
+## **4. 5G CBOM Fundamentals in CycloneDX**
 
 A CBOM is an object model for describing cryptographic assets and their dependencies. In CycloneDX, CBOM support is native and may be embedded in a broader BOM or externalized as a separate CBOM. The practical value of this model is that cryptographic assets can be represented in the same machine-readable ecosystem as software and system components, while still preserving cryptography-specific detail such as algorithms, protocols, certificates, keys, and dependency usage.
 
@@ -118,7 +118,7 @@ CycloneDX dependencies are especially important. A 5G CBOM can describe not only
 
 This guide assumes that implementers use the CycloneDX base model as the carrier and the ATIS taxonomy as the 5G-specific extension layer. The result is not a separate syntax. It is a profile-driven use of existing CycloneDX capabilities.
 
-5. 5G CBOM Implementation Model
+## **5. 5G CBOM Implementation Model**
 
 A useful 5G CBOM begins with an architecture boundary rather than a property list. The first task is to define what the BOM is intended to represent: a product capability statement, a deployment posture statement, a single network function, a service chain, or a broader architecture scenario such as roaming.
 
@@ -137,7 +137,7 @@ The ATIS taxonomy supports this model by separating BOM-scoped metadata from com
 
 
 
-6. Applying the Taxonomy: Core Modeling Patterns
+## **6. Applying the Taxonomy: Core Modeling Patterns**
 
 The most effective way to apply the taxonomy is to think in modeling patterns rather than individual properties. An implementation team should know what kind of statement it is trying to make and then select the appropriate taxonomy pattern.
 
@@ -176,7 +176,7 @@ Where possible, implementers should prefer CycloneDX-native modeling for detaile
 
 A common implementation error is over-modeling too early. A first release should capture enough structure to answer practical questions, but it does not need to record every cryptographic parameter from day one. The right level of detail is the lowest level that still supports the intended operational use cases.
 
-7. Vendor and Deployed CBOM Profiles
+## **7. Vendor and Deployed CBOM Profiles**
 
 One of the most important decisions in a 5G CBOM is whether the BOM describes vendor capability or deployed effective posture. These are related but distinct products, and mixing them without clear labeling undermines the value of the CBOM.
 
@@ -213,7 +213,7 @@ The distinction matters because a supported protocol is not the same as a deploy
 
 
 
-8. Implementation Workflow
+## **8. Implementation Workflow**
 
 The implementation workflow should be simple enough for repeated use and formal enough to support quality control. A practical workflow for the ATIS 5G taxonomy contains seven stages.
 
@@ -243,7 +243,7 @@ The most sustainable model is shared ownership. Product teams and architects sup
 
 Organizations should not wait for perfect data before starting. A staged maturity path is more realistic: begin with BOM-level metadata and coarse NF-level inventory, then add interface binding, effective posture, and richer dependency detail as data sources mature.
 
-9. Validation and Quality Checks
+## **9. Validation and Quality Checks**
 
 Validation should be treated as a required use step, not as an optional finishing activity. A CBOM that is syntactically valid but semantically unclear still creates risk because it can be misunderstood by consumers or rejected by ingestion pipelines.
 
@@ -293,7 +293,7 @@ Implementers should use the validation artifacts published alongside the taxonom
 
 Validation should happen before publication and again when a CBOM is transformed, merged, enriched, or imported into a downstream analysis system. For deployed CBOMs, validation should also be part of the refresh process when operational configuration changes.
 
-10. Publication, Versioning, and Governance
+## **10. Publication, Versioning, and Governance**
 
 A 5G CBOM is only useful if a consumer can determine what it represents, when it was produced, and which taxonomy release it expects. Publication and governance practices therefore matter as much as authoring.
 
@@ -311,7 +311,7 @@ Retention and refresh rules for vendor and deployed CBOMs.
 
 The ATIS GitHub should be treated as the publication home for the live taxonomy and for reference examples. Local project copies should not become shadow standards. Instead, project governance should record which taxonomy release was used and should identify when a refresh is required because the implementation or the taxonomy has moved forward.
 
-11. Consumption and Operational Use
+## **11. Consumption and Operational Use**
 
 The value of a 5G CBOM does not end with document generation. The point of producing a machine-readable cryptographic inventory is to support decisions and actions. The operational uses below are the ones most strongly supported by the CycloneDX CBOM guidance and the IBM one-sheet, and they map directly to telecom needs.
 
@@ -335,7 +335,7 @@ In practice, consumption often starts with inventory and visibility. Over time, 
 
 
 
-12. Implementation Tips and Common Pitfalls
+## **12. Implementation Tips and Common Pitfalls**
 
 The following practices consistently improve implementation quality:
 
@@ -363,7 +363,7 @@ Assuming that a syntactically valid BOM is automatically complete or operational
 
 Freezing a local copy of the taxonomy and then diverging from the GitHub release without governance.
 
-13. Closing Guidance
+## **13. Closing Guidance**
 
 The ATIS Telecom 5G CBOM Property Taxonomy gives the telecom community a practical way to carry 3GPP 5G architecture and cryptographic inventory information in a standardized CycloneDX form. Its value is greatest when used as a living implementation profile: clear scope, clear semantics, disciplined validation, and consistent publication.
 
