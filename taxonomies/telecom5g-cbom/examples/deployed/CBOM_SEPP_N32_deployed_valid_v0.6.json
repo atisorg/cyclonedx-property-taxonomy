@@ -1,0 +1,214 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-04-13T09:00:00Z",
+    "properties": [
+      {
+        "name": "atis:telecom5g:profile",
+        "value": "3gpp-5g-arch-cbom/0.6"
+      },
+      {
+        "name": "atis:telecom5g:cbom.scope",
+        "value": "deployed"
+      },
+      {
+        "name": "atis:telecom5g:baselineRelease",
+        "value": "Rel-17"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "service",
+      "name": "SEPP",
+      "bom-ref": "nf:SEPP",
+      "properties": [
+        {
+          "name": "atis:telecom5g:interfaces",
+          "value": "N32-c,N32-f"
+        },
+        {
+          "name": "atis:telecom5g:nfType",
+          "value": "SEPP"
+        },
+        {
+          "name": "atis:telecom5g:3gppSpecRelease",
+          "value": "Rel-17"
+        }
+      ]
+    },
+    {
+      "type": "service",
+      "name": "SEPP-N32-c Interface Binding (Deployed)",
+      "bom-ref": "iface:nf:SEPP:N32-c:deployed",
+      "properties": [
+        {
+          "name": "atis:telecom5g:interface",
+          "value": "N32-c"
+        },
+        {
+          "name": "atis:telecom5g:cryptoFunction",
+          "value": "ChannelProtection-CP"
+        },
+        {
+          "name": "atis:telecom5g:protocol",
+          "value": "TLS 1.3"
+        },
+        {
+          "name": "atis:telecom5g:cryptography",
+          "value": "TLS_AES_128_GCM_SHA256,ECDHE P-256,ECDSA P-256"
+        },
+        {
+          "name": "atis:telecom5g:pqcRiskLevel",
+          "value": "High"
+        },
+        {
+          "name": "atis:telecom5g:iface.N32-c.effectiveProtocol",
+          "value": "TLS 1.3"
+        },
+        {
+          "name": "atis:telecom5g:iface.N32-c.effectiveCryptography",
+          "value": "TLS_AES_128_GCM_SHA256,ECDHE P-256,ECDSA P-256"
+        },
+        {
+          "name": "atis:telecom5g:iface.N32-c.cert.keyType",
+          "value": "ECDSA"
+        },
+        {
+          "name": "atis:telecom5g:iface.N32-c.cert.curve",
+          "value": "P-256"
+        },
+        {
+          "name": "atis:telecom5g:iface.N32-c.cert.validation",
+          "value": "OCSP"
+        }
+      ]
+    },
+    {
+      "type": "service",
+      "name": "SEPP-N32-f Interface Binding (Deployed)",
+      "bom-ref": "iface:nf:SEPP:N32-f:deployed",
+      "properties": [
+        {
+          "name": "atis:telecom5g:interface",
+          "value": "N32-f"
+        },
+        {
+          "name": "atis:telecom5g:cryptoFunction",
+          "value": "APIProtection"
+        },
+        {
+          "name": "atis:telecom5g:protocol",
+          "value": "PRINS"
+        },
+        {
+          "name": "atis:telecom5g:cryptography",
+          "value": "JWE,JWS,AES-128-GCM,ECDH P-256"
+        },
+        {
+          "name": "atis:telecom5g:pqcRiskLevel",
+          "value": "High"
+        },
+        {
+          "name": "atis:telecom5g:iface.N32-f.effectiveProtocol",
+          "value": "PRINS"
+        },
+        {
+          "name": "atis:telecom5g:iface.N32-f.effectiveCryptography",
+          "value": "JWE,JWS,AES-128-GCM,ECDH P-256"
+        }
+      ]
+    },
+    {
+      "name": "TLSv1.3",
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/protocol/tls@1.3",
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "tls",
+          "version": "1.3",
+          "cipherSuites": [
+            {
+              "name": "TLS_AES_128_GCM_SHA256",
+              "algorithms": [
+                "crypto/algorithm/aes-128-gcm@2.16.840.1.101.3.4.1.6",
+                "crypto/algorithm/sha-256@2.16.840.1.101.3.4.2.1"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "PRINS",
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/protocol/prins@1.0",
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "other",
+          "version": "1.0",
+          "cipherSuites": [
+            {
+              "name": "PRINS_JOSE_PROFILE",
+              "algorithms": [
+                "crypto/algorithm/aes-128-gcm@2.16.840.1.101.3.4.1.6"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "AES-128-GCM",
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/algorithm/aes-128-gcm@2.16.840.1.101.3.4.1.6",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "algorithmFamily": "AES",
+          "primitive": "ae",
+          "parameterSetIdentifier": "128",
+          "mode": "gcm"
+        }
+      }
+    },
+    {
+      "name": "SHA-256",
+      "type": "cryptographic-asset",
+      "bom-ref": "crypto/algorithm/sha-256@2.16.840.1.101.3.4.2.1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "algorithmFamily": "SHA2",
+          "primitive": "hash",
+          "parameterSetIdentifier": "256"
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "nf:SEPP",
+      "dependsOn": [
+        "iface:nf:SEPP:N32-c:deployed",
+        "iface:nf:SEPP:N32-f:deployed"
+      ]
+    },
+    {
+      "ref": "iface:nf:SEPP:N32-c:deployed",
+      "dependsOn": [
+        "crypto/protocol/tls@1.3"
+      ]
+    },
+    {
+      "ref": "iface:nf:SEPP:N32-f:deployed",
+      "dependsOn": [
+        "crypto/protocol/prins@1.0"
+      ]
+    }
+  ]
+}

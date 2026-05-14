@@ -1,0 +1,468 @@
+{
+  "name": "ATIS Telecom5G Property Taxonomy",
+  "namespace": "atis:telecom5g",
+  "version": "0.6",
+  "source": "https://github.com/atisorg/cyclonedx-property-taxonomy/blob/main/atis-telecom5g-property-taxonomy-v0.6.md",
+  "notes": [
+    "CycloneDX properties are name/value pairs; in CycloneDX JSON, property values are strings.",
+    "Logical boolean/integer values are encoded as strings (e.g., 'true', 'false', '2048').",
+    "This file is intended for tooling/automation and for generating schema overlays."
+  ],
+  "controlled_vocabularies": {
+    "cbom_scope": [
+      "vendor",
+      "deployed"
+    ],
+    "assertion": [
+      "supported",
+      "effective"
+    ],
+    "pqcRiskLevel": [
+      "High",
+      "Medium",
+      "Low"
+    ],
+    "cryptoFunction": [
+      "Authentication",
+      "Integrity",
+      "Confidentiality",
+      "ChannelProtection-CP",
+      "ChannelProtection-UP",
+      "APIProtection",
+      "KeyManagement"
+    ],
+    "suciProtectionScheme": [
+      "null-scheme",
+      "profile-a",
+      "profile-b"
+    ],
+    "oauthTokenType": [
+      "JWT"
+    ],
+    "oauthTokenProtection": [
+      "signature",
+      "mac"
+    ],
+    "nasIntegrityAlgorithm": [
+      "NIA0",
+      "NIA1",
+      "NIA2",
+      "NIA3"
+    ],
+    "nasConfidentialityAlgorithm": [
+      "NEA0",
+      "NEA1",
+      "NEA2",
+      "NEA3"
+    ],
+    "upIntegrityAlgorithm": [
+      "NIA1",
+      "NIA2",
+      "NIA3"
+    ],
+    "3gppRelease": [
+      "Rel-15",
+      "Rel-16",
+      "Rel-17",
+      "Rel-18",
+      "Rel-19"
+    ],
+    "nfType_33_938_scope": [
+      "AMF",
+      "SMF",
+      "UPF",
+      "SEPP",
+      "AUSF",
+      "UDM",
+      "UDR",
+      "NRF",
+      "NSSF",
+      "PCF",
+      "NEF",
+      "5G-EIR",
+      "N3IWF",
+      "gNB",
+      "ng-eNB"
+    ]
+  },
+  "interface_token_pattern": "(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)",
+  "properties": [
+    {
+      "name": "atis:telecom5g:profile",
+      "appliesTo": [
+        "metadata"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Identifies the ATIS 5G CBOM profile version claimed by this BOM."
+    },
+    {
+      "name": "atis:telecom5g:cbom.scope",
+      "appliesTo": [
+        "metadata"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "vendor",
+          "deployed"
+        ]
+      },
+      "description": "Declares whether the BOM is vendor capability or deployed effective posture."
+    },
+    {
+      "name": "atis:telecom5g:baselineRelease",
+      "appliesTo": [
+        "metadata"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "Rel-15",
+          "Rel-16",
+          "Rel-17",
+          "Rel-18",
+          "Rel-19"
+        ]
+      },
+      "description": "3GPP baseline release assumed for the architecture model."
+    },
+    {
+      "name": "atis:telecom5g:scenario",
+      "appliesTo": [
+        "metadata"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Architecture scenario target identifier."
+    },
+    {
+      "name": "atis:telecom5g:kdfAlgorithm",
+      "appliesTo": [
+        "metadata"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "HMAC-SHA-256"
+        ]
+      },
+      "description": "Key derivation function used in 5G key hierarchy (expected HMAC-SHA-256)."
+    },
+    {
+      "name": "atis:telecom5g:interfaces",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "pattern": "^(?:(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1))(?:,(?:(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)))*$"
+      },
+      "description": "Comma-separated list of 3GPP interfaces supported/exposed by the entity."
+    },
+    {
+      "name": "atis:telecom5g:interface",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "pattern": "^(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)$"
+      },
+      "description": "Single 3GPP interface identifier for a specific binding."
+    },
+    {
+      "name": "atis:telecom5g:cryptoFunction",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "Authentication",
+          "Integrity",
+          "Confidentiality",
+          "ChannelProtection-CP",
+          "ChannelProtection-UP",
+          "APIProtection",
+          "KeyManagement"
+        ]
+      },
+      "description": "Purpose of cryptography on the interface."
+    },
+    {
+      "name": "atis:telecom5g:protocol",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Protocol/mechanism implementing the function."
+    },
+    {
+      "name": "atis:telecom5g:cryptography",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Algorithms/suites/primitives used."
+    },
+    {
+      "name": "atis:telecom5g:pqcRiskLevel",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "High",
+          "Medium",
+          "Low"
+        ]
+      },
+      "description": "Qualitative PQ exposure rating."
+    },
+    {
+      "name": "atis:telecom5g:effectiveProtocol",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Effective protocol(s) used on the wire for the interface binding."
+    },
+    {
+      "name": "atis:telecom5g:effectiveCryptography",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Effective cryptography used on the wire for the interface binding."
+    },
+    {
+      "name": "atis:telecom5g:crypto.supportedProtocols",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Supported protocol set (capability)."
+    },
+    {
+      "name": "atis:telecom5g:crypto.supportedCryptography",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Supported cryptography set (capability)."
+    },
+    {
+      "name": "atis:telecom5g:assertion",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "supported",
+          "effective"
+        ]
+      },
+      "description": "Qualifies statement as supported vs effective."
+    },
+    {
+      "name": "atis:telecom5g:nfType",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "AMF",
+          "SMF",
+          "UPF",
+          "SEPP",
+          "AUSF",
+          "UDM",
+          "UDR",
+          "NRF",
+          "NSSF",
+          "PCF",
+          "NEF",
+          "5G-EIR",
+          "N3IWF",
+          "gNB",
+          "ng-eNB"
+        ]
+      },
+      "description": "Entity type in TR/TS 33.938 scope."
+    },
+    {
+      "name": "atis:telecom5g:3gppSpecRelease",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "Rel-15",
+          "Rel-16",
+          "Rel-17",
+          "Rel-18",
+          "Rel-19"
+        ]
+      },
+      "description": "Release against which this entity is assessed."
+    },
+    {
+      "name": "atis:telecom5g:nasIntegrityAlgorithm",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "NIA0",
+          "NIA1",
+          "NIA2",
+          "NIA3"
+        ]
+      },
+      "description": "NAS integrity algorithm identifier (NIAx)."
+    },
+    {
+      "name": "atis:telecom5g:nasConfidentialityAlgorithm",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "NEA0",
+          "NEA1",
+          "NEA2",
+          "NEA3"
+        ]
+      },
+      "description": "NAS confidentiality algorithm identifier (NEAx)."
+    },
+    {
+      "name": "atis:telecom5g:upIntegrityAlgorithm",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "NIA1",
+          "NIA2",
+          "NIA3"
+        ]
+      },
+      "description": "User plane integrity algorithm identifier (if used)."
+    },
+    {
+      "name": "atis:telecom5g:sbi.mutualAuthentication",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
+        ]
+      },
+      "description": "Mutual authentication required/implemented for SBI."
+    },
+    {
+      "name": "atis:telecom5g:mTLSRequired",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
+        ]
+      },
+      "description": "Alias for sbi.mutualAuthentication."
+    },
+    {
+      "name": "atis:telecom5g:suciProtectionScheme",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "null-scheme",
+          "profile-a",
+          "profile-b"
+        ]
+      },
+      "description": "SUCI protection scheme."
+    },
+    {
+      "name": "atis:telecom5g:oauthTokenType",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "JWT"
+        ]
+      },
+      "description": "OAuth access token type (expected JWT)."
+    },
+    {
+      "name": "atis:telecom5g:oauthTokenProtection",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string",
+        "enum": [
+          "signature",
+          "mac"
+        ]
+      },
+      "description": "OAuth token protection method."
+    }
+  ],
+  "property_name_patterns": [
+    {
+      "namePattern": "^atis:telecom5g:iface\\.(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)\\.(?:cryptoFunction|protocol|cryptography|pqcRiskLevel|effectiveProtocol|effectiveCryptography)$",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Per-interface dotted bindings for interface-level reporting."
+    },
+    {
+      "namePattern": "^atis:telecom5g:iface\\.(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)\\.cert\\.(?:keyType|keyLength|curve|validation)$",
+      "appliesTo": [
+        "component"
+      ],
+      "value": {
+        "type": "string"
+      },
+      "description": "Per-interface certificate parameter reporting."
+    }
+  ]
+}

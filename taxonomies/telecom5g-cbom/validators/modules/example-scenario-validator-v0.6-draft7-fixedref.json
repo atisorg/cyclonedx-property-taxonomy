@@ -1,0 +1,627 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.org/schemas/atis/3gpp-5g-arch-cbom-profile-0.6.schema.json",
+  "title": "3GPP 5G Architecture CBOM Profile for CycloneDX 1.7 (Draft v0.6) \u2014 Validator (draft-07 compatible)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "http://cyclonedx.org/schema/bom-1.7.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bomFormat": {
+          "const": "CycloneDX"
+        },
+        "specVersion": {
+          "const": "1.7"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "array",
+              "allOf": [
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "const": "atis:telecom5g:profile"
+                      },
+                      "value": {
+                        "const": "3gpp-5g-arch-cbom/0.6"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "const": "atis:telecom5g:cbom.scope"
+                      },
+                      "value": {
+                        "enum": [
+                          "vendor",
+                          "deployed"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "properties"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "minItems": 1
+        },
+        "dependencies": {
+          "type": "array",
+          "minItems": 1
+        }
+      },
+      "required": [
+        "bomFormat",
+        "specVersion",
+        "metadata",
+        "components",
+        "dependencies"
+      ],
+      "anyOf": [
+        {
+          "title": "Vendor (capability) CBOM rules",
+          "properties": {
+            "metadata": {
+              "properties": {
+                "properties": {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "const": "atis:telecom5g:cbom.scope"
+                      },
+                      "value": {
+                        "const": "vendor"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ]
+                  }
+                }
+              }
+            },
+            "components": {
+              "type": "array",
+              "allOf": [
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "bom-ref": {
+                        "const": "nf:SEPP"
+                      },
+                      "name": {
+                        "const": "SEPP"
+                      }
+                    },
+                    "required": [
+                      "bom-ref",
+                      "name"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "bom-ref": {
+                        "type": "string",
+                        "pattern": "^iface:nf:SEPP:N32-c$"
+                      },
+                      "properties": {
+                        "type": "array",
+                        "allOf": [
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:interface"
+                                },
+                                "value": {
+                                  "const": "N32-c"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:protocol"
+                                },
+                                "value": {
+                                  "const": "TLS 1.3"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:cryptography"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:pqcRiskLevel"
+                                },
+                                "value": {
+                                  "enum": [
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "bom-ref",
+                      "properties"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "bom-ref": {
+                        "type": "string",
+                        "pattern": "^iface:nf:SEPP:N32-f$"
+                      },
+                      "properties": {
+                        "type": "array",
+                        "allOf": [
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:interface"
+                                },
+                                "value": {
+                                  "const": "N32-f"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:protocol"
+                                },
+                                "value": {
+                                  "const": "PRINS"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:cryptography"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:pqcRiskLevel"
+                                },
+                                "value": {
+                                  "enum": [
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "bom-ref",
+                      "properties"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Deployed (on-the-wire) CBOM rules",
+          "properties": {
+            "metadata": {
+              "properties": {
+                "properties": {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "const": "atis:telecom5g:cbom.scope"
+                      },
+                      "value": {
+                        "const": "deployed"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ]
+                  }
+                }
+              }
+            },
+            "components": {
+              "type": "array",
+              "allOf": [
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "bom-ref": {
+                        "const": "nf:SEPP"
+                      },
+                      "name": {
+                        "const": "SEPP"
+                      }
+                    },
+                    "required": [
+                      "bom-ref",
+                      "name"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "bom-ref": {
+                        "type": "string",
+                        "pattern": "^iface:nf:SEPP:N32-c:deployed$"
+                      },
+                      "properties": {
+                        "type": "array",
+                        "allOf": [
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:interface"
+                                },
+                                "value": {
+                                  "const": "N32-c"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:protocol"
+                                },
+                                "value": {
+                                  "const": "TLS 1.3"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:cryptography"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:pqcRiskLevel"
+                                },
+                                "value": {
+                                  "enum": [
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:iface.N32-c.effectiveProtocol"
+                                },
+                                "value": {
+                                  "const": "TLS 1.3"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:iface.N32-c.effectiveCryptography"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "bom-ref",
+                      "properties"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "bom-ref": {
+                        "type": "string",
+                        "pattern": "^iface:nf:SEPP:N32-f:deployed$"
+                      },
+                      "properties": {
+                        "type": "array",
+                        "allOf": [
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:interface"
+                                },
+                                "value": {
+                                  "const": "N32-f"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:protocol"
+                                },
+                                "value": {
+                                  "const": "PRINS"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:cryptography"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:pqcRiskLevel"
+                                },
+                                "value": {
+                                  "enum": [
+                                    "High",
+                                    "Medium",
+                                    "Low"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:iface.N32-f.effectiveProtocol"
+                                },
+                                "value": {
+                                  "const": "PRINS"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "contains": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "const": "atis:telecom5g:iface.N32-f.effectiveCryptography"
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "bom-ref",
+                      "properties"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-02-13T00:00:00Z",
+    "properties": [
+      {
+        "name": "atis:telecom5g:profile",
+        "value": "3gpp-5g-arch-cbom/0.4"
+      },
+      {
+        "name": "atis:telecom5g:cbom.scope",
+        "value": "deployed"
+      },
+      {
+        "name": "atis:telecom5g:baselineRelease",
+        "value": "Rel-17"
+      },
+      {
+        "name": "atis:telecom5g:scenario",
+        "value": "TS23.501-generic"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "service",
+      "name": "AMF",
+      "bom-ref": "nf:AMF",
+      "properties": [
+        {
+          "name": "atis:telecom5g:interfaces",
+          "value": "N2"
+        },
+        {
+          "name": "atis:telecom5g:crypto.supportedProtocols",
+          "value": "DTLS 1.3,IKEv2,IPsec ESP"
+        },
+        {
+          "name": "atis:telecom5g:crypto.supportedCryptography",
+          "value": "AES-128-GCM,AES-256-GCM,SHA-256,SHA-384,PRF_HMAC_SHA2_256,PRF_HMAC_SHA2_384,AUTH_HMAC_SHA256_128,ECDH P-256,ECDH P-384,Curve25519"
+        }
+      ]
+    },
+    {
+      "type": "device",
+      "name": "gNB-CU",
+      "bom-ref": "nf:gNB-CU",
+      "properties": [
+        {
+          "name": "atis:telecom5g:interfaces",
+          "value": "N2"
+        }
+      ]
+    },
+    {
+      "type": "service",
+      "name": "AMF-N2 Interface Binding (Deployed)",
+      "bom-ref": "iface:nf:AMF:N2:deployed",
+      "properties": [
+        {
+          "name": "atis:telecom5g:interface",
+          "value": "N2"
+        },
+        {
+          "name": "atis:telecom5g:cryptoFunction",
+          "value": "ChannelProtection-CP"
+        },
+        {
+          "name": "atis:telecom5g:pqcRiskLevel",
+          "value": "High"
+        },
+        {
+          "name": "atis:telecom5g:iface.N2.effectiveProtocol",
+          "value": "IKEv2 + IPsec ESP"
+        },
+        {
+          "name": "atis:telecom5g:iface.N2.effectiveCryptography",
+          "value": "ESP_AES_128_GCM,PRF_HMAC_SHA2_256,AUTH_HMAC_SHA256_128,DH group19 (P-256)"
+        },
+        {
+          "name": "atis:telecom5g:iface.N2.cert.keyType",
+          "value": "ECDSA"
+        },
+        {
+          "name": "atis:telecom5g:iface.N2.cert.curve",
+          "value": "P-256"
+        },
+        {
+          "name": "atis:telecom5g:iface.N2.cert.validation",
+          "value": "OCSP"
+        },
+        {
+          "name": "atis:telecom5g:protocol",
+          "value": "IKEv2"
+        },
+        {
+          "name": "atis:telecom5g:protocol",
+          "value": "IPsec ESP"
+        },
+        {
+          "name": "atis:telecom5g:cryptography",
+          "value": "AES-128-GCM,PRF_HMAC_SHA2_256,AUTH_HMAC_SHA256_128,ECDH P-256,ECDSA P-256"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "IKEv2",
+      "bom-ref": "crypto/protocol/ikev2",
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "ikev2",
+          "version": "2",
+          "cipherSuites": [
+            {
+              "name": "IKE_SA_INIT (effective)",
+              "algorithms": [
+                "crypto/alg/aes-128-gcm",
+                "crypto/alg/prf-hmac-sha2-256",
+                "crypto/alg/auth-hmac-sha256-128",
+                "crypto/alg/ecdh-group19-p256",
+                "crypto/alg/ecdsa-p256"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "IPsec ESP",
+      "bom-ref": "crypto/protocol/ipsec-esp",
+      "cryptoProperties": {
+        "assetType": "protocol",
+        "protocolProperties": {
+          "type": "ipsec-esp",
+          "version": "RFC4303",
+          "cipherSuites": [
+            {
+              "name": "ESP_AES_128_GCM (effective)",
+              "algorithms": [
+                "crypto/alg/aes-128-gcm"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128-GCM",
+      "bom-ref": "crypto/alg/aes-128-gcm",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "algorithmFamily": "AES",
+          "primitive": "ae",
+          "parameterSetIdentifier": "128",
+          "mode": "gcm",
+          "cryptoFunctions": [
+            "encrypt",
+            "decrypt",
+            "tag"
+          ],
+          "classicalSecurityLevel": 128,
+          "nistQuantumSecurityLevel": 1
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PRF_HMAC_SHA2_256",
+      "bom-ref": "crypto/alg/prf-hmac-sha2-256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "algorithmFamily": "HMAC",
+          "primitive": "mac",
+          "parameterSetIdentifier": "SHA-256",
+          "cryptoFunctions": [
+            "prf"
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AUTH_HMAC_SHA256_128",
+      "bom-ref": "crypto/alg/auth-hmac-sha256-128",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "algorithmFamily": "HMAC",
+          "primitive": "mac",
+          "parameterSetIdentifier": "SHA-256-128",
+          "cryptoFunctions": [
+            "integrity"
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Diffie-Hellman group 19 (ECP-256 / P-256)",
+      "bom-ref": "crypto/alg/ecdh-group19-p256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "algorithmFamily": "ECDH",
+          "primitive": "kem",
+          "parameterSetIdentifier": "group19/P-256",
+          "cryptoFunctions": [
+            "keyAgreement"
+          ]
+        }
+      }
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA P-256",
+      "bom-ref": "crypto/alg/ecdsa-p256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "algorithmFamily": "ECDSA",
+          "primitive": "sig",
+          "parameterSetIdentifier": "P-256",
+          "cryptoFunctions": [
+            "signature"
+          ]
+        }
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "nf:AMF",
+      "dependsOn": [
+        "iface:nf:AMF:N2:deployed"
+      ]
+    },
+    {
+      "ref": "iface:nf:AMF:N2:deployed",
+      "dependsOn": [
+        "nf:gNB-CU",
+        "crypto/protocol/ikev2",
+        "crypto/protocol/ipsec-esp"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://atis.org/schemas/atis-telecom5g-profile-0.6.schema.json",
+  "title": "ATIS telecom5g property taxonomy validator overlay for CycloneDX 1.7 (v0.6)",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "http://cyclonedx.org/schema/bom-1.7.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bomFormat": {
+          "const": "CycloneDX"
+        },
+        "specVersion": {
+          "const": "1.7"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "properties": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "value"
+                ],
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "name": {
+                          "pattern": "^atis:telecom5g:"
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ]
+                    },
+                    "then": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:profile"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:cbom.scope"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "vendor",
+                                "deployed"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:baselineRelease"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "Rel-15",
+                                "Rel-16",
+                                "Rel-17",
+                                "Rel-18",
+                                "Rel-19"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:scenario"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:kdfAlgorithm"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "HMAC-SHA-256"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:interfaces"
+                            },
+                            "value": {
+                              "type": "string",
+                              "pattern": "^(?:(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1))(?:,(?:(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)))*$"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:interface"
+                            },
+                            "value": {
+                              "type": "string",
+                              "pattern": "^(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)$"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:cryptoFunction"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "Authentication",
+                                "Integrity",
+                                "Confidentiality",
+                                "ChannelProtection-CP",
+                                "ChannelProtection-UP",
+                                "APIProtection",
+                                "KeyManagement"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:protocol"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:cryptography"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:pqcRiskLevel"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "High",
+                                "Medium",
+                                "Low"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:effectiveProtocol"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:effectiveCryptography"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:crypto.supportedProtocols"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:crypto.supportedCryptography"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:assertion"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "supported",
+                                "effective"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:nfType"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "AMF",
+                                "SMF",
+                                "UPF",
+                                "SEPP",
+                                "AUSF",
+                                "UDM",
+                                "UDR",
+                                "NRF",
+                                "NSSF",
+                                "PCF",
+                                "NEF",
+                                "5G-EIR",
+                                "N3IWF",
+                                "gNB",
+                                "ng-eNB"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:3gppSpecRelease"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "Rel-15",
+                                "Rel-16",
+                                "Rel-17",
+                                "Rel-18",
+                                "Rel-19"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:nasIntegrityAlgorithm"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "NIA0",
+                                "NIA1",
+                                "NIA2",
+                                "NIA3"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:nasConfidentialityAlgorithm"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "NEA0",
+                                "NEA1",
+                                "NEA2",
+                                "NEA3"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:upIntegrityAlgorithm"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "NIA1",
+                                "NIA2",
+                                "NIA3"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:sbi.mutualAuthentication"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "true",
+                                "false"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:mTLSRequired"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "true",
+                                "false"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:suciProtectionScheme"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "null-scheme",
+                                "profile-a",
+                                "profile-b"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:oauthTokenType"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "JWT"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "const": "atis:telecom5g:oauthTokenProtection"
+                            },
+                            "value": {
+                              "type": "string",
+                              "enum": [
+                                "signature",
+                                "mac"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "pattern": "^atis:telecom5g:iface\\.(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)\\.(?:cryptoFunction|protocol|cryptography|pqcRiskLevel|effectiveProtocol|effectiveCryptography)$"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "pattern": "^atis:telecom5g:iface\\.(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)\\.cert\\.(?:keyType|keyLength|curve|validation)$"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "value"
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "allOf": [
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "const": "atis:telecom5g:profile"
+                      },
+                      "value": {
+                        "const": "3gpp-5g-arch-cbom/0.6"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "const": "atis:telecom5g:cbom.scope"
+                      },
+                      "value": {
+                        "enum": [
+                          "vendor",
+                          "deployed"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "properties"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "properties": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "value"
+                  ],
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "name": {
+                            "pattern": "^atis:telecom5g:"
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ]
+                      },
+                      "then": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:profile"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:cbom.scope"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "vendor",
+                                  "deployed"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:baselineRelease"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "Rel-15",
+                                  "Rel-16",
+                                  "Rel-17",
+                                  "Rel-18",
+                                  "Rel-19"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:scenario"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:kdfAlgorithm"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "HMAC-SHA-256"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:interfaces"
+                              },
+                              "value": {
+                                "type": "string",
+                                "pattern": "^(?:(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1))(?:,(?:(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)))*$"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:interface"
+                              },
+                              "value": {
+                                "type": "string",
+                                "pattern": "^(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)$"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:cryptoFunction"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "Authentication",
+                                  "Integrity",
+                                  "Confidentiality",
+                                  "ChannelProtection-CP",
+                                  "ChannelProtection-UP",
+                                  "APIProtection",
+                                  "KeyManagement"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:protocol"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:cryptography"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:pqcRiskLevel"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "High",
+                                  "Medium",
+                                  "Low"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:effectiveProtocol"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:effectiveCryptography"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:crypto.supportedProtocols"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:crypto.supportedCryptography"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:assertion"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "supported",
+                                  "effective"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:nfType"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "AMF",
+                                  "SMF",
+                                  "UPF",
+                                  "SEPP",
+                                  "AUSF",
+                                  "UDM",
+                                  "UDR",
+                                  "NRF",
+                                  "NSSF",
+                                  "PCF",
+                                  "NEF",
+                                  "5G-EIR",
+                                  "N3IWF",
+                                  "gNB",
+                                  "ng-eNB"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:3gppSpecRelease"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "Rel-15",
+                                  "Rel-16",
+                                  "Rel-17",
+                                  "Rel-18",
+                                  "Rel-19"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:nasIntegrityAlgorithm"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "NIA0",
+                                  "NIA1",
+                                  "NIA2",
+                                  "NIA3"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:nasConfidentialityAlgorithm"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "NEA0",
+                                  "NEA1",
+                                  "NEA2",
+                                  "NEA3"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:upIntegrityAlgorithm"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "NIA1",
+                                  "NIA2",
+                                  "NIA3"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:sbi.mutualAuthentication"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "true",
+                                  "false"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:mTLSRequired"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "true",
+                                  "false"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:suciProtectionScheme"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "null-scheme",
+                                  "profile-a",
+                                  "profile-b"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:oauthTokenType"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "JWT"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "const": "atis:telecom5g:oauthTokenProtection"
+                              },
+                              "value": {
+                                "type": "string",
+                                "enum": [
+                                  "signature",
+                                  "mac"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "pattern": "^atis:telecom5g:iface\\.(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)\\.(?:cryptoFunction|protocol|cryptography|pqcRiskLevel|effectiveProtocol|effectiveCryptography)$"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "pattern": "^atis:telecom5g:iface\\.(?:N\\d+|N32|N32-c|N32-f|Nnrf|Npcf|Nnef|Nbsf|Nudm|Nudr|Nnwdaf|Xn|F1|E1)\\.cert\\.(?:keyType|keyLength|curve|validation)$"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "value"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "bomFormat",
+        "specVersion",
+        "metadata",
+        "components"
+      ]
+    }
+  ]
+}
