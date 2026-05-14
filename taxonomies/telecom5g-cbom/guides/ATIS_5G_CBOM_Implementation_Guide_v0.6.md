@@ -94,7 +94,7 @@ Return to the taxonomy during implementation whenever a specific property choice
 
 
 
-3.4 ATIS GitHub artifacts and folder layout (outline)
+### **3.4. ATIS GitHub artifacts and folder layout (outline)**
 
 The ATIS GitHub repository hosts the normative taxonomy and the supporting validation and example artifacts. Implementers should reference the current release for the authoritative versions of these files.
 
@@ -141,25 +141,25 @@ The ATIS taxonomy supports this model by separating BOM-scoped metadata from com
 
 The most effective way to apply the taxonomy is to think in modeling patterns rather than individual properties. An implementation team should know what kind of statement it is trying to make and then select the appropriate taxonomy pattern.
 
-6.1 BOM-level profile and scenario metadata
+### **6.1. BOM-level profile and scenario metadata**
 
 BOM-level metadata should identify the profile claim, the architecture scenario where relevant, the assumed 3GPP baseline release, and whether the CBOM represents vendor capability or deployed posture. This is what makes the document interpretable before a consumer reads any network function detail.
 
-6.2 Network function representation
+### **6.2. Network function representation**
 
 Each 5G network function in scope should be represented as a CycloneDX component. The component identity should be clear and stable enough to support later dependency and interface references. Where the canonical network function name is not obvious from the component name, the NF-specific taxonomy fields should be used to preserve canonical naming and architecture role context.
 
-6.3 Coarse NF-level crypto inventory
+### **6.3. Coarse NF-level crypto inventory**
 
 A coarse NF-level inventory is useful when the goal is to declare the general cryptographic profile of a network function without yet enumerating each interface binding. This is usually the right starting point for first-generation vendor CBOMs, because it provides a usable inventory quickly and supports later refinement.
 
-6.4 Interface-binding modeling
+### **6.4. Interface-binding modeling**
 
 When the cryptographic posture must be attributed to specific reference points, the recommended pattern is to model each interface binding as a separate component with a stable `bom-ref`. This allows the CBOM to represent Interface → Protocol → Algorithm relationships in a schema-aligned way and avoids ambiguity when a network function uses different protections on different interfaces.
 
 Interface-binding modeling is especially valuable for 5G because many security and migration questions are not answered at the network-function level alone. Teams often need to know what is protected on N2, N12, N32, inter-PLMN links, or other reference points, and whether the statement refers to capability or effective use.
 
-6.5 PKI, trust, and standards traceability
+### **6.5. PKI, trust, and standards traceability**
 
 PKI artifacts and standards traceability can be captured using core CycloneDX 1.7 structures. Implementers should represent certificate and key material as CycloneDX cryptographic assets (and relate them via dependencies) when detailed PKI parameters are needed. Implementers can record standards/specification traceability using CycloneDX `externalReferences` (e.g., links to 3GPP TS/TR documents) rather than encoding citations in ATIS property values.
 
@@ -172,7 +172,7 @@ The ATIS telecom5g taxonomy MAY be used to add concise, telecom-specific tags th
 
 Where possible, implementers should prefer CycloneDX-native modeling for detailed certificate attributes, validation mechanisms, and trust anchors, and use ATIS tags only where they add operational meaning without duplicating the CycloneDX model.
 
-6.6 Choosing the right level of detail
+### **6.6. Choosing the right level of detail**
 
 A common implementation error is over-modeling too early. A first release should capture enough structure to answer practical questions, but it does not need to record every cryptographic parameter from day one. The right level of detail is the lowest level that still supports the intended operational use cases.
 
@@ -180,7 +180,7 @@ A common implementation error is over-modeling too early. A first release should
 
 One of the most important decisions in a 5G CBOM is whether the BOM describes vendor capability or deployed effective posture. These are related but distinct products, and mixing them without clear labeling undermines the value of the CBOM.
 
-7.1 Vendor capability CBOM
+### **7.1. Vendor capability CBOM**
 
 A vendor capability CBOM describes what a network function or product supports. It is the right form when a supplier wants to declare supported protocols, algorithms, interface protections, or optional capabilities that may later be enabled by configuration.
 
@@ -194,11 +194,11 @@ When producing a vendor capability CBOM, implementers should link the CBOM to th
 
 • This linkage supports procurement traceability, ingestion workflows, and consistent cross-vendor comparison.
 
-7.2 Deployed effective CBOM
+### **7.2. Deployed effective CBOM**
 
 A deployed effective CBOM describes what is actually configured, negotiated, or used in a specific operator environment. It is the right form when the purpose is risk review, policy checking, PQC planning, or evidence of the current posture on the wire.
 
-7.3 Why the distinction matters
+### **7.3. Why the distinction matters**
 
 The distinction matters because a supported protocol is not the same as a deployed protocol, and an implemented algorithm is not the same as an effective negotiated algorithm. Consumers need to know whether a statement reflects product capability or deployment reality before they can assess compliance, weakness exposure, or migration readiness.
 
@@ -231,15 +231,15 @@ Validate. Run CycloneDX 1.7 schema validation and ATIS telecom5g taxonomy/profil
 
 Publish and maintain. Release the BOM with clear versioning and refresh it when architecture, configuration, cryptographic posture, or taxonomy release usage changes.
 
-8.1 Inputs
+### **8.1. Inputs**
 
 The source inputs for authoring will vary by organization. Common inputs include architecture diagrams, product design documentation, security specifications, configuration baselines, certificate management records, platform build data, and scanning or discovery outputs.
 
-8.2 Ownership
+### **8.2. Ownership**
 
 The most sustainable model is shared ownership. Product teams and architects supply authoritative design information; security teams define policy and validation expectations; tooling teams automate generation and checks; and governance teams manage publication and retention.
 
-8.3 Iterative maturity
+### **8.3. Iterative maturity**
 
 Organizations should not wait for perfect data before starting. A staged maturity path is more realistic: begin with BOM-level metadata and coarse NF-level inventory, then add interface binding, effective posture, and richer dependency detail as data sources mature.
 
@@ -265,11 +265,11 @@ Implementation-quality review to confirm the CBOM is complete enough for its int
 
 
 
-9.1 Validator artifacts (hosted on GitHub)
+### **9.1. Validator artifacts (hosted on GitHub)**
 
 Implementers should use the validation artifacts published alongside the taxonomy release (v0.6): a machine-readable taxonomy extract, a CycloneDX 1.7 overlay validation schema, and helper scripts/README for CI and local validation.
 
-9.2 Validation steps (outline)
+### **9.2. Validation steps (outline)**
 
 • Obtain the current ATIS telecom5g validation package from the ATIS GitHub release used for the CBOM.
 
@@ -283,7 +283,7 @@ Implementers should use the validation artifacts published alongside the taxonom
 
 • Re-run validation after any transformation or enrichment step (merge, normalization, tool ingestion/export).
 
-9.3 Recommended usage in vendor/operator pipelines (outline)
+### **9.3. Recommended usage in vendor/operator pipelines (outline)**
 
 • Vendors: validate prior to delivery (pre-submission gate) and include the profile marker and cbom.scope in every published CBOM.
 
