@@ -12,13 +12,13 @@ with CycloneDX CBOMs for 3GPP 5G security architecture
 
 
 
-Draft implementation guide v0.6
+# **Draft implementation guide v0.6**
 
 Prepared for working use and review
 
 
 
-Summary
+## **Summary**
 
 The ATIS Telecom 5G CBOM Property Taxonomy provides a 5G-specific property layer for describing 3GPP 5G architecture, network functions, interfaces, cryptographic posture, trust boundaries, and related standards traceability within a CycloneDX CBOM. This guide explains how to apply that taxonomy to real implementation work. It is intended for teams that need to produce, validate, exchange, and consume 5G CBOMs in a consistent way across vendor and operator environments.
 
@@ -80,11 +80,11 @@ The ATIS GitHub taxonomy and this guide play different roles. The taxonomy defin
 
 A practical reading order is:
 
-Read the current ATIS GitHub taxonomy release to understand the property set and current examples.
+1. Read the current ATIS GitHub taxonomy release to understand the property set and current examples.
 
-Use this guide to decide scope, authoring approach, validation workflow, and publication practices.
+2. Use this guide to decide scope, authoring approach, validation workflow, and publication practices.
 
-Return to the taxonomy during implementation whenever a specific property choice, property location, or example is needed.
+3. Return to the taxonomy during implementation whenever a specific property choice, property location, or example is needed.
 
 
 
@@ -167,6 +167,7 @@ The ATIS telecom5g taxonomy MAY be used to add concise, telecom-specific tags th
 
 
 • indicating whether PKI is used for a given interface/binding (high-level usage indicator), and
+
 • classifying trust domain/boundary context (e.g., intra-operator vs inter-PLMN/roaming).
 
 
@@ -184,7 +185,7 @@ One of the most important decisions in a 5G CBOM is whether the BOM describes ve
 
 A vendor capability CBOM describes what a network function or product supports. It is the right form when a supplier wants to declare supported protocols, algorithms, interface protections, or optional capabilities that may later be enabled by configuration.
 
-7.1a Linking a vendor CBOM to companion SBOM/HBOM (outline)
+### **7.1.a Linking a vendor CBOM to companion SBOM/HBOM (outline)**
 
 When producing a vendor capability CBOM, implementers should link the CBOM to the companion BOM artifact(s) that describe the underlying deliverables (SBOM for software; HBOM for hardware).
 
@@ -217,19 +218,19 @@ The distinction matters because a supported protocol is not the same as a deploy
 
 The implementation workflow should be simple enough for repeated use and formal enough to support quality control. A practical workflow for the ATIS 5G taxonomy contains seven stages.
 
-Define the target and boundary. Decide whether the CBOM covers a product, a network function, a deployment, or a broader architecture scenario.
+1. Define the target and boundary. Decide whether the CBOM covers a product, a network function, a deployment, or a broader architecture scenario.
 
-Select the scope profile. Decide whether the CBOM is vendor capability, deployed effective posture, or another clearly stated use case.
+2. Select the scope profile. Decide whether the CBOM is vendor capability, deployed effective posture, or another clearly stated use case.
 
-Identify in-scope entities. Enumerate the network functions, platform components, cryptographic libraries, protocols, and certificates that are relevant to the declared boundary.
+3. Identify in-scope entities. Enumerate the network functions, platform components, cryptographic libraries, protocols, and certificates that are relevant to the declared boundary.
 
-Map interfaces and protections. Identify which 3GPP reference points are relevant and whether the implementation needs NF-level inventory only or interface-binding detail.
+4. Map interfaces and protections. Identify which 3GPP reference points are relevant and whether the implementation needs NF-level inventory only or interface-binding detail.
 
-Author the CycloneDX BOM. Populate the base BOM fields and add the taxonomy properties required by the chosen profile and level of detail.
+5. Author the CycloneDX BOM. Populate the base BOM fields and add the taxonomy properties required by the chosen profile and level of detail.
 
-Validate. Run CycloneDX 1.7 schema validation and ATIS telecom5g taxonomy/profile conformance validation (using the published overlay schema and helper scripts) before exchange or publication.
+6. Validate. Run CycloneDX 1.7 schema validation and ATIS telecom5g taxonomy/profile conformance validation (using the published overlay schema and helper scripts) before exchange or publication.
 
-Publish and maintain. Release the BOM with clear versioning and refresh it when architecture, configuration, cryptographic posture, or taxonomy release usage changes.
+7. Publish and maintain. Release the BOM with clear versioning and refresh it when architecture, configuration, cryptographic posture, or taxonomy release usage changes.
 
 ### **8.1. Inputs**
 
@@ -299,15 +300,15 @@ A 5G CBOM is only useful if a consumer can determine what it represents, when it
 
 At a minimum, publication practice should address the following:
 
-A stable publication location or exchange mechanism for the CBOM.
+- A stable publication location or exchange mechanism for the CBOM.
 
-Versioning of the BOM itself so updates can be compared or superseded.
+- Versioning of the BOM itself so updates can be compared or superseded.
 
-Reference to the ATIS GitHub taxonomy release that the CBOM was authored against.
+- Reference to the ATIS GitHub taxonomy release that the CBOM was authored against.
 
-Clear change management when scope, deployment posture, or modeling depth materially changes.
+- Clear change management when scope, deployment posture, or modeling depth materially changes.
 
-Retention and refresh rules for vendor and deployed CBOMs.
+- Retention and refresh rules for vendor and deployed CBOMs.
 
 The ATIS GitHub should be treated as the publication home for the live taxonomy and for reference examples. Local project copies should not become shadow standards. Instead, project governance should record which taxonomy release was used and should identify when a refresh is required because the implementation or the taxonomy has moved forward.
 
@@ -339,29 +340,29 @@ In practice, consumption often starts with inventory and visibility. Over time, 
 
 The following practices consistently improve implementation quality:
 
-Start with a small number of strong modeling rules and apply them consistently.
+- Start with a small number of strong modeling rules and apply them consistently.
 
-Declare scope explicitly at the BOM level and do not rely on readers to infer whether the CBOM is vendor or deployed.
+- Declare scope explicitly at the BOM level and do not rely on readers to infer whether the CBOM is vendor or deployed.
 
-Use interface-binding modeling whenever the cryptographic question is interface-specific.
+- Use interface-binding modeling whenever the cryptographic question is interface-specific.
 
-Prefer structured references and machine-readable fields over narrative free text.
+- Prefer structured references and machine-readable fields over narrative free text.
 
-Keep the CBOM aligned to current architecture reality; stale deployed posture data quickly loses value.
+- Keep the CBOM aligned to current architecture reality; stale deployed posture data quickly loses value.
 
-Use the ATIS GitHub taxonomy as the live authority and keep examples versioned with that publication.
+- Use the ATIS GitHub taxonomy as the live authority and keep examples versioned with that publication.
 
 The following pitfalls should be avoided:
 
-Combining supported capability and deployed posture without clear labeling.
+- Combining supported capability and deployed posture without clear labeling.
 
-Using network-function level statements where interface-level detail is required for analysis.
+- Using network-function level statements where interface-level detail is required for analysis.
 
-Treating the presence of a library or implementation as proof of effective usage.
+- Treating the presence of a library or implementation as proof of effective usage.
 
-Assuming that a syntactically valid BOM is automatically complete or operationally meaningful.
+- Assuming that a syntactically valid BOM is automatically complete or operationally meaningful.
 
-Freezing a local copy of the taxonomy and then diverging from the GitHub release without governance.
+- Freezing a local copy of the taxonomy and then diverging from the GitHub release without governance.
 
 ## **13. Closing Guidance**
 
