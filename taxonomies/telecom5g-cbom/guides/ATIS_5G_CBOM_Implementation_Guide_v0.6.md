@@ -377,6 +377,6 @@ Organizations adopting the taxonomy should focus on repeatability rather than pe
 
 
 ---
-Footer text (from document footer):
+Copyright ATIS 2026 :
 
-ATIS Telecom 5G CBOM Implementation Guide  |  Page 1
+ATIS Telecom 5G CBOM Implementation Guide  
