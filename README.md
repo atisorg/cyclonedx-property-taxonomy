@@ -1,58 +1,78 @@
-# ATIS CBOM Standard for Telecom 
-# cyclonedx-property-taxonomy
-The official CycloneDX property taxonomy for ATIS CBOM for Telecom ..
+# ATIS CycloneDX Property Taxonomies
 
-For more information on the CycloneDX property taxonomies, refer to their [documentation](https://github.com/CycloneDX/cyclonedx-property-taxonomy).
+This repository hosts **ATIS-managed CycloneDX property taxonomies** and related artifacts (profiles, validators, examples, and implementation guidance).  
+The goal is to make domain-specific BOM data **consistent, interoperable, and tool-friendly** across vendors, operators, and ecosystem tools.
 
-# atis:telecom5g — CycloneDX Property Taxonomy
+## What you’ll find here
 
+- **Taxonomy specifications** (human-readable Markdown) defining property names, value rules, and usage guidance
+- **Machine-readable extracts** (JSON) for automation and validator generation
+- **Profile and validation artifacts** to help implementers validate conformance
+- **Examples** to demonstrate recommended modeling patterns
 
-# Description
+## Repository layout
 
-The atis:telecom5g Property Taxonomy defines a standardized set of CycloneDX property names for representing 3GPP 5G architecture and security/cryptography metadata in CycloneDX BOMs (with a focus on CBOM use cases). It provides consistent, interoperable naming for:
+Top-level structure is designed to support **multiple ATIS taxonomies** over time.
 
-5G Network Functions (NFs) and their roles
+```
+/
+  README.md
+  LICENSE
+  CONTRIBUTING.md
+  /taxonomies/
+    /telecom5g-cbom/
+      README.md
+      /taxonomy/
+      /profile/
+      /validators/
+      /examples/
+      /guides/
+      /tools/
+      /releases/
+    /<future-taxonomy>/
+      ...
+```
 
-3GPP reference interfaces (e.g., N1–N32) and per-interface security bindings
+## Available taxonomies
 
-Cryptographic protocols, algorithms, and suites (including 3GPP-specific mechanisms where needed)
+| Taxonomy | Current version | Description | Entry point |
+|---|---:|---|---|
+| **Telecom 5G CBOM** | v0.6 | ATIS `atis:telecom5g` property taxonomy for 3GPP 5G security architecture CBOMs (CycloneDX 1.7) | `taxonomies/telecom5g-cbom/README.md` |
 
-Trust boundaries and PKI/certificate usage indicators
+## Quick start
 
-Standards traceability back to relevant 3GPP specifications
+### 1) Use the normative taxonomy
+Start with the Markdown taxonomy document for your chosen taxonomy (for 5G: `atis:telecom5g`).  
+It is the authoritative reference for:
+- property names
+- controlled vocabularies/enums
+- placement guidance and modeling patterns
 
-This taxonomy is intended to be used alongside a CycloneDX profile (e.g., a “3GPP 5G Architecture CBOM Profile for CycloneDX 1.7”) that defines the conformance rules (MUST/SHOULD) for vendors producing CBOMs for 5G infrastructure.
+### 2) Validate CBOMs
+Implementers should validate CBOMs in two layers:
 
-# Scope
+1. **CycloneDX schema validation** (e.g., CycloneDX CLI or schema validator)
+2. **ATIS taxonomy/profile conformance** (overlay schema / linter)
 
-This taxonomy applies to 3GPP 5G infrastructure and related deployments, including (but not limited to):
+Each taxonomy folder includes validator artifacts and helper scripts under `validators/`.
 
-5G Core (5GC) network functions such as AMF, SMF, UPF, AUSF, UDM, PCF, NRF, NSSF, NEF, SEPP, etc.
+## Adding new ATIS taxonomies
 
-5G Access components such as UE and (R)AN, where relevant to security and cryptographic inventory
+New taxonomies should be added under `taxonomies/<taxonomy-name>/` using the same structure as the 5G CBOM package:
+- `taxonomy/` (normative taxonomy + machine extract)
+- `profile/` (how to use CycloneDX for that domain)
+- `validators/` (overlay schema and optional modules)
+- `examples/` (reference examples)
+- `guides/` (implementation guide / notes)
 
-3GPP-defined reference points and service-based interfaces (e.g., N1, N2, N3, N4, N6, N9, N11, N12, N14, N15, N22, N32)
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-Roaming and inter-PLMN security scenarios (e.g., SEPP/N32 protections)
+## Versioning
 
-# In scope
+Taxonomy packages use **semantic versioning** at the package level (e.g., `v0.6`).
+- Increment **minor** versions when adding new properties/enums in a backward-compatible way
+- Increment **major** versions for breaking changes (renames/removals, semantic reversals)
 
-Naming conventions for properties that capture interface-level crypto protections
+## License
 
-NF-level crypto declarations where interface-level detail is not available
-
-Indicators for PKI usage, trust anchors, and trust domains/zones
-
-References to 3GPP specifications governing cryptographic behavior
-
-# Out of scope
-
-Defining or changing the CycloneDX base schema
-
-Replacing authoritative 3GPP requirements; this taxonomy only provides metadata conventions
-
-Product/vendor-specific implementation details not needed for interoperability
-
-Non-3GPP telecom domains (unless explicitly added via additional ATIS sub-taxonomies)
-
-If you want, I can also add a short “Audience / Intended Use” paragraph (vendors, operators, regulators, auditors) and a “Compatibility” section that states it’s intended for CycloneDX 1.7 CBOM/cryptography work and works with any format that supports CycloneDX properties.
+Unless stated otherwise within a subdirectory, content in this repository is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE).
