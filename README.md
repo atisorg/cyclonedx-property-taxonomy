@@ -75,4 +75,5 @@ Taxonomy packages use **semantic versioning** at the package level (e.g., `v0.6`
 
 ## License
 
-Unless stated otherwise within a subdirectory, content in this repository is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE).
+Unless stated otherwise within a subdirectory, content in this repository is licensed under the **Apache License 2.0**. See [LICENSE.md](LICENSE.md
+).
