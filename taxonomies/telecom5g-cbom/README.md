@@ -1,12 +1,12 @@
-# Telecom 5G CBOM Taxonomy Package
+# Repository Retired
 
-This package contains the ATIS `atis:telecom5g` property taxonomy and supporting artifacts for producing and validating
-3GPP 5G architecture CBOMs using CycloneDX 1.7.
+> **This repository is no longer maintained.**
 
-Key folders:
-- `taxonomy/`: normative taxonomy + machine extract
-- `profile/`: CBOM profile guidance
-- `validators/`: overlay validator + helper scripts
-- `examples/`: vendor/deployed examples and negative tests
-- `guides/`: implementation guide
-- `releases/`: convenience bundles
+The work previously hosted here has moved to the new **ATIS Telecom CBOM Profiles** repository:
+
+## ➜ [Telecom-CBOM-Profiles](https://github.com/atisorg/Telecom-CBOM-Profiles)
+
+Please use the new repository for the latest Telecom CBOM profiles, artifacts, documentation, issues, and future updates.
+
+**New repository:**  
+https://github.com/atisorg/Telecom-CBOM-Profiles
